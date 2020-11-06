@@ -1,7 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
-import { getRisksFromDb } from "./db/connect";
+import { getRisksFromDb } from "./repositories/Risk.repository"
 
 let PORT = 8080;
 var app = express();
@@ -9,8 +9,8 @@ var app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-app.get("/", function (req, res) {
-  const result = getRisksFromDb();
+app.get("/",async (req, res) => {
+  const result = await getRisksFromDb();
   res.send(result);
 });
 
