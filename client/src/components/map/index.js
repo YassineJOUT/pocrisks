@@ -5,6 +5,7 @@ import { token } from "../../util/config";
 mapboxgl.accessToken = token;
 
 const Map = () => {
+
   const mapContainerRef = useRef(null);
 
   const [state, setState] = useState({
@@ -14,13 +15,13 @@ const Map = () => {
   });
 
   useEffect(() => {
-    const map = new mapboxgl.Map({
+     new mapboxgl.Map({
       container: mapContainerRef.current,
       style: "mapbox://styles/mapbox/streets-v11",
       center: [state.lng, state.lat],
       zoom: state.zoom,
     });
-  }, []);
+  }, [state]);
 
   return (
     <>
