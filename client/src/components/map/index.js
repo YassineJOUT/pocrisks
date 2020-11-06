@@ -47,7 +47,7 @@ const Map = ({ geoData }) => {
         }
       );
     });
-  }, [state]);
+  });
 
   return (
     <>
