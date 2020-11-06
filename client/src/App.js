@@ -7,10 +7,13 @@ const App = () => {
   const [geoData, setGeoData] = useState(null);
 
   useEffect(() => {
+    console.log(
+      "MOUNTED"
+    )
     getGeoData()
-      .then((res) => setGeoData(res.data))
+      .then((res) => {setGeoData(res.data); console.log("data ", res.data)})
       .catch((err) => console.error("API ERROR : ", err.message));
-  }, [geoData]);
+  },[]);
 
   return (
     <>
