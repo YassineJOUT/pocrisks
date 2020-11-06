@@ -1,10 +1,14 @@
-import React from 'react';
-function App() {
-  return (
-    <div>
-    <h1> Hello oum</h1>
-    </div>
-  );
-}
+import React from "react";
+import Map from "./components/map";
+import "./style.css";
+
+
+
+const App = () => {
+
+return (<>
+  <Map />
+</>)
+};
 
 export default App;
