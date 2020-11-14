@@ -11,10 +11,8 @@ const MapContainer = () => {
     getGeoData()
       .then((res) => {
         setGeoData(res.data);
-        console.log("API GEO DATA ", res.data);
       })
       .catch((err) => {
-        console.error("API ERROR : ", err.response.status);
         purgeState()
         history.push("/login")
       });

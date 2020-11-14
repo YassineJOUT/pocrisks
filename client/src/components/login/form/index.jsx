@@ -1,4 +1,4 @@
-import React, { useContext, useReducer } from "react";
+import React, { useContext, useEffect, useReducer } from "react";
 import { Segment, Form, Button } from "semantic-ui-react";
 import { Formik } from "formik";
 import { login } from "../../../service/repository";
@@ -40,11 +40,8 @@ const reducer = (state, action) => {
 };
 
 const LoginForm = () => {
-  const { contextState, setContext } = useContext(Context);
-  // open dashboard if user is logged in
-  if (contextState.isLogged) {
-    history.push("/");
-  }
+
+
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const handleFormSubmit = (values, { resetForm }) => {
@@ -75,61 +72,63 @@ const LoginForm = () => {
   };
 
   return (
-    <Formik
-      initialValues={formInitialValues}
-      onSubmit={handleFormSubmit}
-      validationSchema={loginValidationSchema}
-    >
-      {({ values, handleChange, handleBlur, handleSubmit, errors }) => (
-        <Form size="large" onSubmit={handleSubmit}>
-          {state.error && (
-            <Notification
-              isVisible={true}
-              isSuccess={false}
-              error={state.error}
-            />
-          )}
-          <Segment stacked>
-            <Form.Input
-              fluid
-              icon="user"
-              iconPosition="left"
-              placeholder="E-mail address"
-              name="email"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.email}
-              {...(errors.email && {
-                error: {
-                  content: errors.email,
-                  pointing: "below",
-                },
-              })}
-            />
-            <Form.Input
-              fluid
-              icon="lock"
-              iconPosition="left"
-              placeholder="Password"
-              type="password"
-              name="password"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.password}
-              {...(errors.password && {
-                error: {
-                  content: errors.password,
-                  pointing: "below",
-                },
-              })}
-            />
-            <Button type="submit" color="teal" fluid size="large">
-              {state.isLoading ? "Loading..." : "Login"}
-            </Button>
-          </Segment>
-        </Form>
-      )}
-    </Formik>
+    <>
+      <Formik
+        initialValues={formInitialValues}
+        onSubmit={handleFormSubmit}
+        validationSchema={loginValidationSchema}
+      >
+        {({ values, handleChange, handleBlur, handleSubmit, errors }) => (
+          <Form size="large" onSubmit={handleSubmit}>
+            {state.error && (
+              <Notification
+                isVisible={true}
+                isSuccess={false}
+                error={state.error}
+              />
+            )}
+            <Segment stacked>
+              <Form.Input
+                fluid
+                icon="user"
+                iconPosition="left"
+                placeholder="E-mail address"
+                name="email"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.email}
+                {...(errors.email && {
+                  error: {
+                    content: errors.email,
+                    pointing: "below",
+                  },
+                })}
+              />
+              <Form.Input
+                fluid
+                icon="lock"
+                iconPosition="left"
+                placeholder="Password"
+                type="password"
+                name="password"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.password}
+                {...(errors.password && {
+                  error: {
+                    content: errors.password,
+                    pointing: "below",
+                  },
+                })}
+              />
+              <Button type="submit" color="teal" fluid size="large">
+                {state.isLoading ? "Loading..." : "Login"}
+              </Button>
+            </Segment>
+          </Form>
+        )}
+      </Formik>
+    </>
   );
 };
 
