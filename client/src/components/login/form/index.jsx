@@ -1,11 +1,11 @@
-import React, { useReducer } from "react";
+import React, { useContext, useReducer } from "react";
 import { Segment, Form, Button } from "semantic-ui-react";
 import { Formik } from "formik";
 import { login } from "../../../service/repository";
 import { loginValidationSchema } from "../../../util/validationSchemas";
 import Notification from "../../shared/notification";
 import { history } from "../../../util/history";
-
+import { Context, saveState } from "../../../util/useAuth";
 // formik dependencies
 /**
  *
@@ -40,6 +40,11 @@ const reducer = (state, action) => {
 };
 
 const LoginForm = () => {
+  const { contextState, setContext } = useContext(Context);
+  // open dashboard if user is logged in
+  if (contextState.isLogged) {
+    history.push("dashboard");
+  }
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const handleFormSubmit = (values, { resetForm }) => {
@@ -52,7 +57,16 @@ const LoginForm = () => {
             payload: res.data.data,
           });
           resetForm();
-          history.push("/")
+          const state = {
+            contextState: {
+              isLogged: true,
+              user: res.data.data,
+            },
+            setContext,
+          };
+          setContext(state);
+          saveState(state);
+          history.push("/");
         } else dispatch({ type: "failure", payload: res.data.message });
       })
       .catch((err) => {
