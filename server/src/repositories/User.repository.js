@@ -34,7 +34,7 @@ class UserRepository {
   authenticate = async (user) => {
     const rs = await this.findOneByUsername(user.username);
     if(rs){
-        const validPwd = compare(user.password, rs.password);
+        const validPwd = await compare(user.password, rs.password);
         if(validPwd)
             return rs;
     }
