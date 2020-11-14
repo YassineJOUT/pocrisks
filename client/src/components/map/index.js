@@ -34,19 +34,14 @@ const Map = ({ geoData }) => {
           .addTo(map);
       });
 
-    map.on("click", function (e) {
-      console.log(Object.values(e.lngLat.wrap()))
-      let pop = new L.Popup({ offset: 25 }).setText(
-        "this is a new marker"
-      );
-      var el = document.createElement("div");
-      el.id = "marker";
-      new L.Marker(el)
-        .setLngLat(Object.values(e.lngLat.wrap()))
-        .setPopup(pop)
-        .addTo(map);
-      ;
-    });
+    // map.on("click", function (e) {
+    //   var el = document.createElement("div");
+    //   el.id = "marker";
+    //   new L.Marker(el)
+    //     .setLngLat(Object.values(e.lngLat.wrap()))
+    //     .setPopup(pop)
+    //     .addTo(map);
+    // });
     // map.on("load", () => {
     //   map.loadImage(
     //     "https://docs.mapbox.com/mapbox-gl-js/assets/custom_marker.png",
