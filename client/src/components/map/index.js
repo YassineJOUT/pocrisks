@@ -7,7 +7,7 @@ L.accessToken = token;
 const Map = ({ geoData }) => {
   const mapContainerRef = useRef(null);
 
-  const [state, setState] = useState({
+  const [state] = useState({
     lng: -7.3848547,
     lat: 33.6835086,
     zoom: 13,
@@ -27,7 +27,7 @@ const Map = ({ geoData }) => {
         );
         var el = document.createElement("div");
         el.id = "marker";
-        new L.Marker(el)
+        return new L.Marker(el)
           .setLngLat(e.geometry.coordinates)
           .setPopup(pop)
           .addTo(map);
