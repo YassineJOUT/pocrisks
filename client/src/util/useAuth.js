@@ -16,6 +16,14 @@ export const saveState = (state) => {
     // ignore write errors
   }
 };
+// localStorage.js
+export const purgeState = () => {
+  try {
+    localStorage.clear();
+  } catch {
+    // ignore write errors
+  }
+};
 
 export const initialState = {
   isLogged: false,

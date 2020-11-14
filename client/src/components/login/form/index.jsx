@@ -43,7 +43,7 @@ const LoginForm = () => {
   const { contextState, setContext } = useContext(Context);
   // open dashboard if user is logged in
   if (contextState.isLogged) {
-    history.push("dashboard");
+    history.push("/");
   }
   const [state, dispatch] = useReducer(reducer, initialState);
 
