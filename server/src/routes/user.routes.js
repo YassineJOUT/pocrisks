@@ -7,8 +7,10 @@ const userRouter = express.Router();
 
 userRouter.post("/login", async (req, res) => {
   const user = req.body;
-
-  const rs = await userRepository.authenticate(user);
+  const rs = await userRepository.authenticate({
+    ...user,
+    username: user.email,
+  });
   if (rs) {
     const token = generateAccessToken({ username: rs.email });
     res.cookie("token", token, { httpOnly: true });
@@ -21,7 +23,6 @@ userRouter.post("/login", async (req, res) => {
       },
     });
   }
-  res.status(404);
   return res.json({
     success: false,
     message: messages.ERROR_LOGIN,
@@ -34,8 +35,8 @@ userRouter.post("/register", async (req, res) => {
     email: user.email,
     username: user.username,
   });
+
   if (rs) {
-    res.status(302);
     return res.json({
       success: false,
       message: messages.USER_EXISTES,
