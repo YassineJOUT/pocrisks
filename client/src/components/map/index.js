@@ -20,7 +20,6 @@ const Map = ({ geoData }) => {
       center: [state.lng, state.lat],
       zoom: state.zoom,
     });
-    console.log("Geo Data : ", geoData);
     geoData &&
       geoData.features.map((e) => {
         let pop = new L.Popup({ offset: 25 }).setText(
