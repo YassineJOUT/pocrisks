@@ -4,6 +4,7 @@ import { Formik } from "formik";
 import { login } from "../../../service/repository";
 import { loginValidationSchema } from "../../../util/validationSchemas";
 import Notification from "../../shared/notification";
+import { history } from "../../../util/history";
 
 // formik dependencies
 /**
@@ -51,6 +52,7 @@ const LoginForm = () => {
             payload: res.data.data,
           });
           resetForm();
+          history.push("/")
         } else dispatch({ type: "failure", payload: res.data.message });
       })
       .catch((err) => {

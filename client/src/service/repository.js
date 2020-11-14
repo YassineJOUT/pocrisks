@@ -3,10 +3,11 @@ import { API_HOST } from "../util/config";
 
 const options = {
   headers: { "Content-Type": "application/json" },
+  withCredentials: true,
 };
 
 export const getGeoData = () => {
-  return axios.get(API_HOST);
+  return axios.get(API_HOST, options);
 };
 
 export const login = (data) => {

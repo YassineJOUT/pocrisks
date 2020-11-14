@@ -6,7 +6,7 @@ import { connect } from "./db/seqConnect";
 import userRouter from "./routes/user.routes";
 import conf from "dotenv";
 import { verifyToken } from "./helpers/auth.helper";
-import cookieParser  from "cookie-parser";
+import cookieParser from "cookie-parser";
 conf.config();
 // import { Risk } from "./models/risk";
 
@@ -17,12 +17,11 @@ let PORT = 8080;
 var app = express();
 
 app.use(bodyParser.json());
-app.use(cookieParser())
+app.use(cookieParser());
 var corsOptions = {
-  origin: "*",
+  origin: "http://10.188.129.177:3001",
   credentials: true,
 };
-
 
 app.use(cors(corsOptions));
 

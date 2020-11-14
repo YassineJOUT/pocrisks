@@ -10,7 +10,7 @@ const UserFormContainer = ({ children, isRegister }) => {
         </Header>
         {children}
         <Message>
-          {isRegister ?<span>Already registred? <a href="#">Sign In</a></span> : <span>New to us? <a href="#">Sign Up</a></span> } 
+          {isRegister ?<span>Already registred? <a href="/login">Sign In</a></span> : <span>New to us? <a href="/register">Sign Up</a></span> } 
         </Message>
       </Grid.Column>
     </Grid>

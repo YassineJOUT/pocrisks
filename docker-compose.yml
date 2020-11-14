@@ -4,7 +4,7 @@ version: '3.8'
 #   db-data:
 services:
   client:
-    container_name: client
+    container_name: poc-client
     stdin_open: true
     build:
       context: .
@@ -14,7 +14,7 @@ services:
     ports:
       - 3001:3000
   server: 
-    container_name: server
+    container_name: poc-server
     build: 
         context: .
         dockerfile: dockerfiles/Dockerfile.server
