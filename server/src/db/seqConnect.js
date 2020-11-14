@@ -1,6 +1,5 @@
 import Sequelize from "sequelize";
-import conf from "dotenv";
-conf.config();
+
 
 // define connetion object
 export const db = new Sequelize(
