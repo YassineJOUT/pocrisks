@@ -1,10 +1,16 @@
-import React from 'react';
-import LoginContainer from '../../containers/login';
+import React from "react";
+import LoginForm from "../../components/login/form";
+import UserFormContainer from "../../containers/userforms";
+
 
 const LoginPage = () => {
-    return (<>
-        <LoginContainer />
-    </>);
-}
- 
+  return (
+    <>
+      <UserFormContainer>
+        <LoginForm />
+      </UserFormContainer>
+    </>
+  );
+};
+
 export default LoginPage;

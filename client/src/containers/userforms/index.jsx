@@ -1,22 +1,20 @@
 import React from "react";
 import { Grid, Header, Message } from "semantic-ui-react";
-import LoginForm from "../../components/login/form";
 
-const LoginContainer = () => {
-
+const UserFormContainer = ({ children, isRegister }) => {
   return (
     <Grid textAlign="center" style={{ height: "100vh" }} verticalAlign="middle">
       <Grid.Column style={{ maxWidth: 450 }}>
         <Header as="h2" color="teal" textAlign="center">
           Welcome to lookup city
         </Header>
-        <LoginForm />
+        {children}
         <Message>
-          New to us? <a href="#">Sign Up</a>
+          {isRegister ?<span>Already registred? <a href="#">Sign In</a></span> : <span>New to us? <a href="#">Sign Up</a></span> } 
         </Message>
       </Grid.Column>
     </Grid>
   );
 };
 
-export default LoginContainer;
+export default UserFormContainer;

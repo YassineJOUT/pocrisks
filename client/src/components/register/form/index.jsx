@@ -64,7 +64,6 @@ const RegisterForm = () => {
         } else dispatch({ type: "failure", payload: res.data.message });
       })
       .catch((err) => {
-        console.log(err);
         dispatch({ type: "failure", payload: "Something wnt wrong!" });
       });
   };

@@ -12,7 +12,6 @@ const Notification = ({ isSuccess, message, isVisible, error }) => {
 
   return (
     <>
-      {console.log("notif ",{ isSuccess, message, isVisible, visible })}
       {visible && (
         <Message
           floating
