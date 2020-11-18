@@ -4,9 +4,9 @@
 
 ### Tools and technologies :
 
-Frontend : ReactJs, Mapbox, Semantic ui
-Backend  : NodeJs, ExpressJs, Sequelize
-DB       : Posgres, Postgis
+* Frontend : ReactJs, Mapbox, Semantic ui
+* Backend  : NodeJs, ExpressJs, Sequelize
+* DB       : Posgres, Postgis
 
 ### Features :
 
